@@ -393,6 +393,8 @@ ALL 7 MUST PASS. Do not deliver until they do.
 | Building dark dashboard with components | `ui-component-library` (copy component CSS/HTML) |
 | Need brand color extraction from PDF/PNG | `extract-brand-palette` |
 | User explicitly requests detailed UX audit | `ui-ux-pro-max` (full checklist mode) |
+| Нужны анимированные компоненты / wow-фоны / live кнопки | `animate-ui` (Shadcn CLI install) |
+| Нужен production UI kit с 50+ компонентами и доступностью | `heroui` (npm install @heroui/react) |
 
 ---
 
