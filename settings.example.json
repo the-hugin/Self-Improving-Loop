@@ -1,0 +1,67 @@
+{
+  "_comment": "Copy this file to settings.json and adapt paths for your OS/username.",
+  "cleanupPeriodDays": 7,
+  "env": {
+    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
+    "DISABLE_TELEMETRY": "1"
+  },
+  "includeCoAuthoredBy": false,
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "py ~/.claude/hooks/prompt_dispatch.py",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Read|Bash|WebFetch|WebSearch|Grep",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "py ~/.claude/hooks/post_tool_scan.py",
+            "timeout": 10,
+            "async": true
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "py ~/.claude/hooks/pre_commit_check.py",
+            "timeout": 10,
+            "statusMessage": "Checking staged files for security issues..."
+          }
+        ]
+      }
+    ]
+  },
+  "permissions": {
+    "allow": [
+      "Bash(find:*)",
+      "Bash(git diff:*)"
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "npx -y ccstatusline@latest",
+    "padding": 0
+  },
+  "spinnerVerbs": {
+    "mode": "replace",
+    "verbs": [
+      "Thinking...",
+      "Working on it...",
+      "Just a moment..."
+    ]
+  }
+}

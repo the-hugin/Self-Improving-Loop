@@ -1,0 +1,66 @@
+# ============================================================
+# ~/.claude — .gitignore
+# Публичный репо: включает инфраструктуру SIL, скиллы, шаблоны.
+# Исключает: credentials, приватные данные, per-user состояние.
+# ============================================================
+
+# --- CREDENTIALS & SECRETS (никогда не коммитить) ---
+.credentials.json
+*.key
+*.pem
+*.p12
+*.pfx
+*.cert
+*.token
+
+# --- ИСТОРИЯ СЕССИЙ (огромная и приватная) ---
+history.jsonl
+*.jsonl
+
+# --- РЕФЛЕКСИИ (приватный контент сессий) ---
+reflection.md
+reflection-*.md
+
+# --- PER-USER СОСТОЯНИЕ ---
+skills/sync-state.json
+
+# --- RESEARCH / OSINT SCRIPTS (всегда приватны) ---
+skills/web-scraper/scripts/
+
+# --- PERSONAL CONFIG (пути машино-зависимы, есть settings.example.json) ---
+settings.json
+
+# --- КЭШИ FEDERATION ---
+.sil-base-cache/
+
+# --- ПРОЕКТНЫЕ ДАННЫЕ (per-user) ---
+projects/
+file-history/
+shell-snapshots/
+backups/
+debug/
+paste-cache/
+tasks/
+todos/
+ide/
+
+# --- ВРЕМЕННЫЕ И ГЕНЕРИРОВАННЫЕ ФАЙЛЫ ---
+stats-cache.json
+docx_raw.txt
+*.html
+*.pdf
+*.docx
+
+# --- USER-SPECIFIC ПЛАНЫ (execution plans конкретных сессий) ---
+plans/
+
+# --- PYTHON CACHE ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+desktop.ini
